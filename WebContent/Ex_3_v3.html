@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./styles/styles.css">
+<script type="text/javascript">
+	window.jQuery || document.write('<script type="text/javascript" src="jquery-2.2.3.js"><\/script>');
+</script>
+<script>
+	$(document).ready(function(){
+//==================================================================================
+//SELECTING NODES BY TAG NAMES
+//----------------------------------------------------------------------------------
+//SELECT DIVS TAGS
+// 		var divs = $('div');
+// 		alert('The total number of divs from the page is: ' + divs.size());
+
+//CHANGE THE STYLE OF THE SELECTED ELEMENTS
+//		$('div').css('background-color','green');
+
+//PARCURGERE ELEMENTE SELECTATE SI EFECTUARE OPERATIUNI CU ELE
+// 		$('div').each(function(){
+// 			alert($(this).html());
+// 		});
+
+//SELECTARE ELEMENTE MULTIPLE IN ACELASI SELECT
+// 		var tags = $('div,span');
+// 		alert('The size of the "tags" array is: ' + tags.size());
+		
+//SELECTEAZA TOATE ELEMENTELE DIV SI SPAN SI APOI ITEREAZA PRIN ELE SI LE MODIFICA STILURILE
+// 		$('div,span').css("background-color","blue");
+
+//SELECTEAZA DOAR ELEMENTELE SPAN CARE SUNT COPII DIRECTI SAU INDIRECTI AI UNUI TAG TABLE
+// 		var spanElements = $('table span');
+// 		alert('Numaul total de span-uri care se gasesc in tabele este: ' + spanElements.size());
+
+//========================================================================================
+//SELECTING NODES BY IDS
+//----------------------------------------------------------------------------------------
+//SELECTARE ELEMENTED DUPA ID-URI 
+// 		alert($('#myDiv').html());
+
+//========================================================================================
+//SELECTING NODES BY CLASS NAMES
+//----------------------------------------------------------------------------------------
+//SELECTEAZA TOATE ELEMENTELE CARE AU CLASA .RedDiv SI LE ATRIBUIE STILUL DAT CA PARAMETRU
+// 		$('.RedDiv').css('border','3px solid green');
+		
+//SELECTEASA DOAR DIV-URILE CARE AU CLASA .RedDiv SI LE ATRIBUIE STILUL DAT CA PARAMETRU
+// 		$('div.RedDiv').css('border','4px solid yellow');
+		
+//SELECTEAZA TOATE ELEMENTELE CARE AU UNA DIN CLASELE: .RedDiv, .BlueDiv
+// 		$('.RedDiv, .BlueDiv').css('backgroundColor','brown');
+
+//SELECTEAZA DOAR DIV-URILE CARE AU UNA DIN CLASELE: .RedDiv, .BlueDiv
+// 		$('div.RedDiv, div.BlueDiv').css('background-color','orange');
+
+//=========================================================================
+//SELECTING NODEDS BY ATTRIBUTE VALUE
+//-------------------------------------------------------------------------
+
+//SELECTEAZA DIV-URILE CARE AU UN ATRIBUT "TITLE"
+// 		var divs = $('div[title]');
+// 		alert('Total nr of divs that have a title:' + divs.length);		
+
+//SELECTAREA UNUI ELEMENT CARE ARE UN 'TITLE' CU O ANUMITA VALUARE
+// 		var divs = $('div[title="myTitle"]');
+// 		divs.each(function(){
+// 			alert('The content of the div that has the title "myTitle" is: ' + divs.html());
+// 		});
+
+//SELECTAREA ELEMENTELOR CARE AU ATRIBUTUL 'TYPE' CU VALOAREA 'TEXT':
+// 		var inputs = $('input[type="text"]');
+// 		alert('Number of inputs that have the attribute type=text: ' + inputs.length);
+// 		inputs.css('background-color', 'yellow');
+		
+//=======================================================================================================
+//SELECTING INPUT NODES
+//-------------------------------------------------------------------------------------------------------
+	
+//SELECTEAZA TOATE ELEMENTELE CARE SUNT DE TIP INPUT (inclusiv text areas, input buttons, si altele) NU DOAR TAG-URILE
+//DE TIP INPUT
+		//var inputs = $(':input');
+		//alert('The size of the input elements collection is: ' + inputs.length);
+		//inputs.css("background-color","yellow")
+
+//MERGE SA APLIC FUNCTII DIN JQUERY PE VARIABILA "INPUTS" INSA NU SI PE ELEMENTELE INDIVIDUALE DIN COLECTIE
+//CUM AR FI "ELEMENTS(1)" DEOARECE ACESTE SUNT SIMPLE ELEMENTE HTML. PENTRU ELEMENTELE INDIVIDUALE TREBUIE INFASURATE IN "$()" 
+//PENTRU A PUTEA ACCESA FUNCTIILE JQUERY CUM AR FI ".val()"
+// 		var elem = inputs[2];
+// 		alert($(elem).val());
+
+//PUTEM ITERA PRIN ELEMENTELE SELECTATE
+// 		$(':input').each(function(){
+// 			alert($(this).val());			
+// 		});
+		
+//PUTEM SI SETA VALORILE ELEMENTELOR SELECTATE:
+// 		$(':input').each(function(){
+// 			$(this).val("Test value");
+			
+// 		});
+		
+//PENTRU A REDUCE CAUTAREA PUTEM SPECIFICA FAPTUL CA VREM UN INPUT DIN INTERIORUL UNUI FORM ASTFEL:
+//		var inputs = $('form :input');
+		
+//DE ASEMENTEA PUTEM REDUCE SI MAI MULT CAUTAREA SPECIFICAND ID-UL FORM-ULUI SAU DIV-ULUI IN VREM SA CAUTAM TOATE INPUT-URILE:
+//		var inputs = $('#myForm :input');
+		
+//EXISTA ASTFEL DE SELECTORI SI PT ALTE TIPURI DE ELEMENTE:
+// :button, :checkbox, :disabled, :checked - documentatie in jQuery sectiunea selectors
+
+//=====================================================================================================
+//ADDITIONAL SELECTOR FEATURES
+//-----------------------------------------------------------------------------------------------------		
+
+//SELECREAZA UN DIV CARE CONTINE UN ANUMIT STRING
+// ":contains" POATE FI FOLOSIT SI CU ALTFEL DE ELEMENTE
+		//alert($('div :contains("content")').html());
+		
+//SELECTEAZA ELEMENTELE ODD(impare) SAU EVEN(pare) CARE AU UN ANUMIT TAG
+//POT FI FOLOSITE SI CU ELEMENTE DE TIP DIV, LI ....
+// 		$('tr:odd').css('background-color', 'yellow');		
+// 		$('tr:even').css('background-color', 'blue');
+
+//SCHIMBA BACKGROUND-UL DOAR PT TR-URILE EVEN DIN TABELUL CU ID-UL "dataTable"
+//		$('#dataTable tr:even').css("background-color", "brown");
+
+//SELECTEAZA SPAN-URILE CARE SUNT PRIMUL COPIL AL UNOR ELEMENTE PARINTE
+//POATE FI FOLOSIT PENTRU A CAUTA ORICE ALTE TIPURI DE ELEMENTE (ALTELE DECAT SPAN)
+// 		var spans = $('span:first-child');
+// 		spans.each(function(){
+// 			alert($(this).html()	);
+// 		});
+
+//SELECTORUL "STARTS WIDTH" -- [attribute ^="value"]
+// //SELECTEAZA TOATE INPUT-URILE CARE AU IN ATRIBUTUL "VALUE" O VALOARE CARE INCEPE CU "Events"
+// 		$('input[value^="Events"]').each(function(){
+// 			alert($(this).val());
+// 		});
+
+//SELECTORUL "CONTAINS" -- [attribute *="value"]
+//SELECTEAZA TOATE INPUT-URILE CARE CONTIN IN ATRIBUTUL "VALUE" VALOAREA "World"
+//-POATE FI FOLOSIT SI PENTRU A SELECTA ALTFEL DE ELEMENTE INAFARA DE INPUT-URI
+// 		$('input[value *="World"]').each(function(){
+// 			alert($(this).val());
+// 		});
+
+//PUTEM SI UPDATA CODUL TAG-URILOR PE CARE LE SELECTAM
+// 		$('div[title *="Special div"]').each(function(){
+// 			$(this).html('This is an updated div value due to the title selected');
+// 		});
+
+//SELECTORUL "ENDS WIDTH" -- "[attribute $= "value"]"
+//SELECTEAZA TOATE INPUT-URILE CARE AU IN ATRIBUTUL "VALUE" CEVA CARE SE TERMINA CU "Test"
+// 		$('input[value $= "Test"]').each(function(){
+// 			alert($(this).val());
+// 		});
+
+//==================================================================================================
+	
+//EXISTA MULTE ALTE METODE DE A SELECTA ELEMENTE IN JQUERY
+//UN ALT EXEMPLU EST URMATORUL:
+//SELECTEAZA AL DOI-LEA COPIL DIN LISTELE PE CARE LE GASESTE IN PAGINA
+//	$('li:nth-child(2)');
+
+//MAI MULTE DESPRE SELECTORS GASIM IN DOCUMENTATIA JQUERY SECTIUNEA - "ELEMENT SELECTORS"
+
+
+	});
+</script>
+</head>
+<body>
+	<div id="myDiv" title="This is a Special div">
+		<p>This is the content of the tag with the ID myDiv</p>	
+	</div>
+	<div>
+		Another div	
+	</div>
+	<div>
+		<input type="button" value="Events-World asdf rrr">
+		<input type="button" value="Events-National Test">
+		<input type="button" value="Events-Local Test">
+		<input type="button" value="The Test World coupe">
+	</div>
+	<div>
+		<table>
+			<tr>
+				<td>Cell row 1</td>
+			</tr>
+			<tr>
+				<td>Cell row 2</td>
+			</tr>
+			<tr>
+				<td><span>Cell row 3</span></td>
+			</tr>
+			<tr>
+				<td>
+					<table id="dataTable">
+						<tr>
+							<td><span>Nested table cell and row</span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="RedDiv" title="redDivTitle">
+		<span>Red div</span>
+	</div>
+	<div class="BlueDiv">
+		<span>Blue div</span>
+	</div>
+	<span class="RedDiv">
+		Content of the span with the span with the class RedDiv.
+	</span>
+	
+	<div title="jQuery picture">
+		<img alt="random img" src="./images/jQuery_img.png">
+	</div>
+	
+	<div>
+		<form id="myForm" action="">
+			<table style="width: 300px">
+				<tr>
+					<td style="width: 30%">First name:</td>
+					<td style="width: 70%"><input type="text" id="firstNameTextBox" value="John"/></td>
+				</tr>
+				<tr>
+					<td style="width: 70%">Last name:</td>
+					<td style="width: 30%"><input type="text" id="lastNameTextBox"></input></td>
+				</tr>
+				<tr>
+					<td>Comments</td>
+					<td><textarea rows="5" cols="30">Text area</textarea></td>
+				</tr>
+				<tr>
+					<td><select>
+						<option value="CA">CA</option>
+						<option value="ME">ME</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Submit" id="submitButton"></td>
+				</tr>
+				
+				
+			</table>
+			
+		</form>
+	</div>
+
+</body>
+</html>
